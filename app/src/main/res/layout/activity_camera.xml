@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.parklee.smarteye.CameraActivity">
+
+    <SurfaceView
+        android:id="@+id/preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:id="@+id/bottomcolor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#08a1ed"
+        android:clickable="false" />
+
+    <Button
+        android:id="@+id/bt_capture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:background="#08a1ed"
+        android:onClick="Capture"
+        android:text="拍照" />
+
+    <Button
+        android:id="@+id/bt_sim_cap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/bt_capture"
+        android:background="#08a1ed"
+        android:onClick="SimpleCapture"
+        android:text="单张" />
+
+    <Button
+        android:id="@+id/bt_mul_cap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/bt_capture"
+        android:background="#08a1ed"
+        android:onClick="MultiCapture"
+        android:text="多张" />
+
+    <Button
+        android:id="@+id/button2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottomcolor"
+        android:layout_alignStart="@+id/bt_mul_cap"
+        android:text="闪光" />
+
+    <Button
+        android:id="@+id/button3"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottomcolor"
+        android:layout_alignEnd="@+id/bt_sim_cap"
+        android:text="网格" />
+
+
+</RelativeLayout>
