@@ -10,7 +10,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/start_camera"
+        android:src="@mipmap/ic_action_camera"
         android:scaleType="fitXY"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -24,7 +24,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/capture_load"
+        android:src="@mipmap/ic_capture_load"
         android:scaleType="fitXY"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/button"
