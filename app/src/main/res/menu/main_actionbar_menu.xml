@@ -5,7 +5,7 @@
         android:title="@string/search"
         app:showAsAction="ifRoom" />
     <item android:id="@+id/action_settings"
-        android:title="@string/settings"
+        android:title="@string/edit"
         app:showAsAction="never" />
 
 </menu>

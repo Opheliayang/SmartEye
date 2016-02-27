@@ -6,9 +6,9 @@ package com.parklee.smarteye;
  * 3、拍照
  * 4、单张模式下，点击拍照进入ResultActivity
  * 5、多张模式下，继续拍照
- *
  * 拍照已实现
  */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.ImageFormat;
@@ -18,6 +18,10 @@ import android.os.Environment;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -30,36 +34,84 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
     private Camera mCamera;
     private SurfaceView mPreview;
     private SurfaceHolder mHolder;
+    private String nameForDir;
+    private String TAG = "info";
+    private int moreNum = 0;
+    private RadioGroup group;
     private Camera.PictureCallback mPictureCallback = new Camera.PictureCallback() {
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
             try {
-                Date date = new Date();
-                SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-                String filename = format.format(date) + ".jpg";
-                File fileFolder = new File(Environment.getExternalStorageDirectory() + "/SEPic/");
-                if (!fileFolder.exists()) {
-                    fileFolder.mkdir();
+                group = (RadioGroup) findViewById(R.id.choose_model);
+                int choosed = group.getCheckedRadioButtonId();
+                if (choosed == R.id.one) {
+                    Date date = new Date();
+                    SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+                    String filename = format.format(date) + ".jpg";
+                    File fileFolder = new
+                            File(Environment.getExternalStorageDirectory() + "/SmartEye/" + nameForDir);
+                    if (!fileFolder.exists()) {
+                        fileFolder.mkdir();
+                    }
+                    File jpgFile = new File(fileFolder, filename);
+                    FileOutputStream fos = new FileOutputStream(jpgFile);
+                    fos.write(data);
+                    fos.close();
+
+                    Intent intent = new Intent(CameraActivity.this, ResultActivity.class);
+                    intent.putExtra("picPath", jpgFile.getAbsolutePath());
+                    startActivity(intent);
+                    CameraActivity.this.finish();
+                } else if (choosed == R.id.more) {
+                    if (moreNum == 0) {
+                        RelativeLayout insertLayout = (RelativeLayout) findViewById(R.id.camera_layout);
+                        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(100, 100);
+                        layoutParams.topMargin = 8;
+                        layoutParams.leftMargin = 8;
+                        layoutParams.rightMargin = 8;
+                        layoutParams.bottomMargin = 8;
+                        layoutParams.addRule(RelativeLayout.RIGHT_OF, R.id.btn_capture);
+                        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+
+                        Button text = new Button(CameraActivity.this);
+                        text.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                        text.setText("完成");
+                        text.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View arg0) {
+                                startActivity(new Intent(CameraActivity.this, MainActivity.class));
+                            }
+                        });
+
+                        insertLayout.addView(text, layoutParams);
+                    }
+                    Date date = new Date();
+                    SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+                    String filename = format.format(date) + ".jpg";
+                    File fileFolder = new
+                            File(Environment.getExternalStorageDirectory() + "/SmartEye/" + nameForDir);
+                    if (!fileFolder.exists()) {
+                        fileFolder.mkdir();
+                    }
+                    File jpgFile = new File(fileFolder, filename);
+                    FileOutputStream fos = new FileOutputStream(jpgFile);
+                    fos.write(data);
+                    fos.close();
+                    moreNum++;
+                    mCamera.startPreview();
                 }
-                File jpgFile = new File(fileFolder, filename);
-                FileOutputStream fos = new FileOutputStream(jpgFile);
-                fos.write(data);
-                fos.close();
-                Intent intent = new Intent(CameraActivity.this, ResultActivity.class);
-                intent.putExtra("picPath", jpgFile.getAbsolutePath());
-                startActivity(intent);
-                CameraActivity.this.finish();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+        Intent i = getIntent();
+        nameForDir = i.getStringExtra("nameForDir");
         mPreview = (SurfaceView) findViewById(R.id.preview);
         mHolder = mPreview.getHolder();
         mHolder.setKeepScreenOn(true);
@@ -68,6 +120,13 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             @Override
             public void onClick(View v) {
                 mCamera.autoFocus(null);
+            }
+        });
+        Button capture = (Button) findViewById(R.id.btn_capture);
+        capture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mCamera.takePicture(null, null, mPictureCallback);
             }
         });
     }
