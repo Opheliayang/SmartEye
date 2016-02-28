@@ -1,21 +1,21 @@
 package com.parklee.smarteye;
 /**
  * 拍照结果界面
- * 1、无ActionBar
- * 2、显示图片
- * 3、不要这张，返回拍照界面
- * 4、图片剪切（磁性）
- * 5、底部栏，旋转按钮、要不要磁性按钮
- * 6、确定按钮，跳转到HandlerActivity
- *
- * 不要这张已实现
+ * 1、OK 有ActionBar，放弃、确认按钮
+ * 2、OK 显示图片
+ * 3、OK 不要这张，返回CameraActivity，删除图片
+ * 4、OK 确定按钮，跳转到HandlerActivity
  */
-import android.app.Activity;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -23,7 +23,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class ResultActivity extends Activity {
+public class ResultActivity extends AppCompatActivity {
 
     private ImageView imageView;
 
@@ -63,4 +63,8 @@ public class ResultActivity extends Activity {
         ResultActivity.this.finish();
     }
 
+    public void yes_this(View view) {
+        startActivity(new Intent(ResultActivity.this, HandlerActivity.class));
+        ResultActivity.this.finish();
+    }
 }

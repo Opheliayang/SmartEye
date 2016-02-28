@@ -23,7 +23,7 @@
         android:elevation="10dp"
         android:onClick="StartCamera"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_action_camera"
+        android:src="@mipmap/ic_photo_camera_white"
         app:backgroundTint="@color/primary"
         app:rippleColor="@color/primary_light" />
 
@@ -37,7 +37,7 @@
         android:layout_marginRight="@dimen/main_margin"
         android:elevation="10dp"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_menu_gallery"
+        android:src="@mipmap/ic_image_white"
         app:backgroundTint="@color/primary"
         app:rippleColor="@color/primary_light" />
 

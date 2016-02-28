@@ -1,14 +1,14 @@
 package com.parklee.smarteye;
 /**
  * 主界面
- * 1、一个ActionBar，右上角一个菜单（重命名、删除、关于我们等）
- * 2、文档的图片和名字显示，初定GridLayout 不确定
- * 3、两个按钮，拍照和导入
+ * 1、OK 一个ActionBar，，搜索+右上角一个菜单（重命名、删除、教程、合并、关于我们等）
+ * 2、文档的图片和名字显示，已用ListView，最好能显示缩略图，左边缩略图，右边文件名
+ * 3、OK 两个按钮，拍照和导入，FloatingActionButton
  * 4、点击拍照，进入CameraActivity
  * 5、点击导入，进行导入
- * 6、点击文档，进入文档浏览界面
- * <p/>
- * 拍照已实现
+ * 6、点击文档，进入ExplorerActivity
+ * 7、搜索
+ * 8、右上角一个菜单（重命名、删除、教程、合并、关于我们等）里面的功能，长摁也可唤出
  */
 
 import android.app.AlertDialog;
@@ -213,9 +213,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_search:
                 openSearch();
                 return true;
-            case R.id.action_settings:
-                openSettings();
-                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -225,8 +223,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void openSettings() {
-
-    }
 
 }

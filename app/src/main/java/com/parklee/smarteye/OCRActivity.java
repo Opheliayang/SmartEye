@@ -7,10 +7,11 @@ package com.parklee.smarteye;
  * 4、有一个菜单、可以复制、txt、word
  *
  */
-import android.app.Activity;
-import android.os.Bundle;
 
-public class OCRActivity extends Activity {
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+public class OCRActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

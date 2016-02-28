@@ -15,65 +15,58 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btn_capture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="bottom"
-        android:layout_margin="@dimen/camera_capture_margin"
-        android:onClick="Capture"
-        android:scaleType="fitXY"
-        android:src="@mipmap/ic_action_camera"
-        app:backgroundTint="@color/primary"
-        app:rippleColor="@color/primary_light" />
-    
-    <RadioGroup
-        android:id="@+id/choose_model"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_toLeftOf="@id/btn_capture"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"></RadioGroup>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_capture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/camera_capture_margin"
+            android:onClick="Capture"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_action_camera"
+            app:backgroundTint="@color/primary"
+            app:rippleColor="@color/primary_light" />
 
-    <RadioButton
-        android:id="@+id/one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/camera_model_margin"
-        android:layout_toStartOf="@+id/btn_capture"
-        android:background="@drawable/radio_sim_capture"
-        android:button="@null"
-        android:checked="true" />
+        <RadioGroup
+            android:id="@+id/choose_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@id/btn_capture"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"></RadioGroup>
 
-    <RadioButton
-        android:id="@+id/more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/camera_model_margin"
-        android:layout_toEndOf="@+id/btn_capture"
-        android:background="@drawable/radio_mul_capture"
-        android:button="@null" />
+        <RadioButton
+            android:id="@+id/one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/camera_model_margin"
+            android:layout_toStartOf="@+id/btn_capture"
+            android:background="@drawable/radio_sim_capture"
+            android:button="@null"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/camera_model_margin"
+            android:layout_toEndOf="@+id/btn_capture"
+            android:background="@drawable/radio_mul_capture"
+            android:button="@null" />
 
     <ImageButton
         android:id="@+id/btn_flash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_grid"
-        android:layout_alignStart="@+id/btn_grid"
         android:background="@android:color/transparent"
-        android:src="@mipmap/btn_ic_flashauto" />
+        android:src="@mipmap/btn_ic_flashoff"
+        android:onClick="flashcontrol"
+        android:layout_above="@+id/more"
+        android:layout_alignParentEnd="true" />
 
-    <ImageButton
-        android:id="@+id/btn_grid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_capture"
-        android:layout_alignParentEnd="true"
-        android:background="@android:color/transparent"
-        android:src="@mipmap/btn_ic_grid" />
 </RelativeLayout>

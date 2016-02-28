@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,21 +13,30 @@
         android:layout_height="match_parent"
         android:scaleType="center" />
 
-    <Button
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/not_this"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/main_margin"
         android:onClick="not_this"
-        android:text="不要这张" />
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_close_white"
+        app:backgroundTint="@color/primary"
+        app:rippleColor="@color/primary_light" />
 
-    <Button
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/yes_this"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="就这张" />
+        android:layout_margin="@dimen/main_margin"
+        android:onClick="yes_this"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_action_done"
+        app:backgroundTint="@color/primary"
+        app:rippleColor="@color/primary_light" />
 
 </RelativeLayout>

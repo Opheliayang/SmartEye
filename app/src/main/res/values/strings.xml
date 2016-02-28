@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">SmartEye</string>
     <string name="search">搜索</string>
-    <string name="edit">编辑</string>
+    <string name="rename">重命名</string>
+    <string name="delete">删除</string>
+    <string name="combine">合并</string>
+    <string name="tutor">教程</string>
+    <string name="about_us">关于我们</string>
+    <string name="sort">排序</string>
+    <string name="choose">选择</string>
+    <string name="gallery">导入</string>
+    <string name="topdf">导出pdf</string>
 </resources>
